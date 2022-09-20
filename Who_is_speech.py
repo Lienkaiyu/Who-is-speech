@@ -26,7 +26,7 @@ async def on_voice_state_update(member, before, after):
     member.nick = Nickname[str(member.id)]
   NicknameDictFile.close()
   
-  if str(after.channel) != "None":
+  if str(after.channel) != "None" and str(before.channel) != str(after.channel):
     if str(member.nick) == "None":
       member.nick = member.name
     await channel_id.send("{}在{}出現了".format(member.nick,after.channel))
