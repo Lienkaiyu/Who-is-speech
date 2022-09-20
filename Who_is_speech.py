@@ -27,9 +27,13 @@ async def on_voice_state_update(member, before, after):
   NicknameDictFile.close()
   
   if str(after.channel) != "None":
+    if str(member.nick) == "None":
+      member.nick = member.name
     await channel_id.send("{}在{}出現了".format(member.nick,after.channel))
     #print(key, value)
   elif str(after.channel) == "None":
+    if str(member.nick) == "None":
+      member.nick = member.name
     await channel_id.send("{}離開了".format(member.nick))
 
 print("Bot ready")
